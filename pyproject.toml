@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "temperature-converter"
+version = "1.0.0"
+description = "Enterprise-grade Fahrenheit to Celsius converter"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+
+[project.scripts]
+temperature-converter = "temperature_converter.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

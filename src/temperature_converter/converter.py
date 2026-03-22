@@ -1,5 +1,7 @@
 """Core conversion logic with strict input validation."""
 
+import math
+
 # Absolute zero in Fahrenheit. No physical temperature can be below this.
 ABSOLUTE_ZERO_F = -459.67
 
@@ -42,10 +44,10 @@ def _validate(value: object) -> None:
         raise TypeError("Temperature must be int or float, got bool")
 
     # Must be finite.
-    if value != value:  # NaN check without importing math
+    if math.isnan(value):
         raise ValueError("Temperature must be a finite number, got NaN")
 
-    if value == float("inf") or value == float("-inf"):
+    if math.isinf(value):
         raise ValueError("Temperature must be a finite number, got infinity")
 
     if value < ABSOLUTE_ZERO_F:
